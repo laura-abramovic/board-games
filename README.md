@@ -1,29 +1,21 @@
 # board-games
 
-***
-
 A board games dataset.
 
-### About
-
-***
+## About
 
 **Author:** Laura Abramović<br>
 **Version:** 1.0<br>
 **Language**: English<br>
 
-### Content
-
-***
+## Content
 
 `games.csv` - CSV distribution of games dataset<br>
 `games.json` - JSON distribution of games dataset<br>
 `export.sh` - a script for exporting dataset to `json` and `csv` format<br>
 `dump` - directory which contains a database dump
 
-### Dataset description
-
-***
+## Dataset description
 
 A dataset contains info about multiple board games. Every game attribute is described in a table below. Attributes which are type of object or array of objects are described in their own tables. Each attribute represents a key in `json` dataset file.<br>
 
@@ -61,9 +53,7 @@ A dataset contains info about multiple board games. Every game attribute is desc
 | designers | A list of people who designed the expansion | array of strings
 | complexity | Average rating of a game complexity with the expansion on a scale from 1 to 10 | numeric
 
-### License
-
-***
+## License
 
 This repository and all of its content is free to use within the 
 [MIT](https://github.com/laura-abramovic/board-games/blob/main/LICENSE)
