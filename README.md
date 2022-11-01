@@ -58,3 +58,7 @@ A dataset contains info about multiple board games. Every game attribute is desc
 This repository and all of its content is free to use within the 
 [MIT](https://github.com/laura-abramovic/board-games/blob/main/LICENSE)
 license.
+
+## Source
+
+Source for all data used in this dataset is BoardGameGeek.
