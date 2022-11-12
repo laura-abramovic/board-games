@@ -1,0 +1,152 @@
+{
+    "$id": "https://github.com/laura-abramovic/board-games/blob/main/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Board games",
+    "description": "An array of board games",
+    "type": "array",
+    "items": {
+        "title": "boardgame",
+        "description": "A board game",
+        "type": "object",
+        "required": [
+            "title",
+            "year",
+            "rating",
+            "players"
+        ],
+        "properties": {
+            "title": {
+                "title": "title",
+                "description": "Title of the board game",
+                "type": "string"
+            },
+            "description": {
+                "title": "description",
+                "description": "A short description of the game",
+                "type": "string"
+            },
+            "year": {
+                "title": "year",
+                "description": "The year in which a game was made",
+                "type": "number"
+            },
+            "rating": {
+                "title": "rating",
+                "description": "Average rating of a game on a scale from 1 to 10",
+                "type": "number"
+            },
+            "players": {
+                "title": "players",
+                "description": "Number of players required to play the game",
+                "type": "object",
+                "required": [
+                    "min",
+                    "max"
+                ],
+                "properties": {
+                    "min": {
+                        "title": "min",
+                        "description": "Minimum number of players required to play the game",
+                        "type": "number"
+                    },
+                    "max": {
+                        "title": "max",
+                        "description": "Maximum number of players required to play the game",
+                        "type": "number"
+                    }
+                }
+            },
+            "duration": {
+                "title": "duration",
+                "description": "Average playing time in minutes",
+                "type": "number"
+            },
+            "age": {
+                "title": "age",
+                "description": "Minimum age required to play the game",
+                "type": "number"
+            },
+            "complexity": {
+                "title": "complexity",
+                "description": "Average rating of a game complexity on a scale from 1 to 5",
+                "type": "number"
+            },
+            "designers": {
+                "title": "designers",
+                "description": "An array of people who designed the game",
+                "type": "array",
+                "items": {
+                    "title": "designer",
+                    "description": "The person who designed the game",
+                    "type": "string"
+                }
+            },
+            "categories": {
+                "title": "categories",
+                "description": "An array of categories/genres of the game",
+                "type": "array",
+                "items": {
+                    "title": "category",
+                    "description": "Game category",
+                    "type": "string"
+                }
+            },
+            "expansions": {
+                "title": "expansions",
+                "description": "An array of expansions for the game",
+                "type": "array",
+                "items": {
+                    "title": "expansion",
+                    "description": "The expansion for the base game",
+                    "type": "object",
+                    "required": [
+                        "title"
+                    ],
+                    "properties": {
+                        "title": {
+                            "title": "title",
+                            "description": "Title of the expansion",
+                            "type": "string"
+                        },
+                        "year": {
+                            "title": "year",
+                            "description": "The year in which an expansion was made",
+                            "type": "number"
+                        },
+                        "rating": {
+                            "title": "rating",
+                            "description": "Average rating of the expansion on a scale from 1 to 10",
+                            "type": "number"
+                        },
+                        "duration": {
+                            "title": "duration",
+                            "description": "Average playing time of a game with the expansion in minutes",
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        },
+                        "designers": {
+                            "title": "designers",
+                            "description": "An array of people who designed the expansion",
+                            "type": "array",
+                            "items": {
+                                "title": "designer",
+                                "description": "The person who designed the expansion",
+                                "type": "string"
+                            }
+                        },
+                        "complexity": {
+                            "title": "complexity",
+                            "description": "Average rating of a game complexity with the expansion on a scale from 1 to 10",
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
