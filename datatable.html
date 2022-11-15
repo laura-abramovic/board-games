@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Board games</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1>Board games dataset</h1>
+
+
+  <div class="col-sm m-4">
+    <button id="btn_json" class="btn btn-primary">Export as JSON</button>
+    <button id="btn_csv" class="btn btn-primary">Export as CSV</button>
+  </div>
+
+  <div class="container m-4">
+    <div class="row">
+
+      <div class="col-sm">
+        <div class="input-group">
+          <input id="search_field" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+          <button id="search_button" type="button" class="btn btn-outline-primary">search</button>
+        </div>
+      </div>
+
+      <div class="col-sm">
+        <select id="field_select" class="form-select" aria-label="Default select example">
+          <option selected>All fields (wildcard)</option>
+          <option value="1">Title</option>
+          <option value="2">Description</option>
+          <option value="3">Year</option>
+          <option value="4">Rating</option>
+          <option value="5">Players</option>
+          <option value="6">Playing time</option>
+          <option value="7">Age</option>
+          <option value="8">Complexity</option>
+          <option value="9">Designers</option>
+          <option value="10">Categories</option>
+          <option value="11">Expansions</option>
+        </select>
+      </div>
+
+      <div class="col-sm">
+        <button id="clear_seach" class="btn btn-primary">Clear search</button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Year</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Players</th>
+        <th scope="col">Playing time</th>
+        <th scope="col">Age</th>
+        <th scope="col">Complexity</th>
+        <th scope="col">Designers</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Expansions</th>
+      </tr>
+    </thead>
+    <tbody id="games_table_body">
+    </tbody>
+  </table>
+
+  <script src="code/client.js"></script>
+
+</body>
+
+</html>
