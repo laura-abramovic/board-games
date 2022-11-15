@@ -13,7 +13,9 @@ A board games dataset.
 `games.csv` - CSV distribution of games dataset<br>
 `games.json` - JSON distribution of games dataset<br>
 `export.sh` - a script for exporting dataset to `json` and `csv` format<br>
-`dump` - directory which contains a database dump
+`schema.json` - a JSON schema of the data set<br>
+`dump` - directory which contains a database dump<br>
+`code` - directory which contains source code for data set web page<br>
 
 ## Dataset description
 
@@ -51,7 +53,7 @@ A dataset contains info about multiple board games. Every game attribute is desc
 | rating | Average rating of the expansion on a scale from 1 to 10 | numeric
 | duration | Average playing time of a game with the expansion in minutes | numeric
 | designers | A list of people who designed the expansion | array of strings
-| complexity | Average rating of a game complexity with the expansion on a scale from 1 to 10 | numeric
+| complexity | Average rating of a game complexity with the expansion on a scale from 1 to 5 | numeric
 
 ## License
 
