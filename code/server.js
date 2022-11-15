@@ -24,19 +24,6 @@ mongoose.connect('mongodb://localhost:27017/boardgames', { useNewUrlParser: true
         console.log("Failed to connect to mongo database. Cause: " + e)
     })
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.get('/games', async (req, res) => {
-    const game = req.query;
-    const games = await Game.find({ game })
-    res.render('games/index', { games })
-})
-
-app.get('/boardgames', function (req, res) {
-    request('')
-})
-
 app.get('/', async (req, res) => {
     const game = req.query;
     const games = await Game.find({ game })
@@ -72,11 +59,6 @@ function saveAsCsv(data) {
     }).join('\n')
 
     console.log(csvData)
-
-    // fs.writeFile('data.csv', data, function(err, result) {
-    //     if (err) console.log("Failed to download, cause: " + err)
-    // }) 
-    // openFile('data.csv')
 }
 
 app.post('/csv', async (req, res) => {
