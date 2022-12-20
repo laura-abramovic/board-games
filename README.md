@@ -57,7 +57,8 @@ A dataset contains info about multiple board games. Every game attribute is desc
 
 ## Open API
 
-APIs for boardgames services.
+APIs for boardgames services.<br>
+OpenAPI is specified in `code/openapi.json`
 
 ## License
 
