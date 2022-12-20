@@ -55,6 +55,10 @@ A dataset contains info about multiple board games. Every game attribute is desc
 | designers | A list of people who designed the expansion | array of strings
 | complexity | Average rating of a game complexity with the expansion on a scale from 1 to 5 | numeric
 
+## Open API
+
+APIs for boardgames services.
+
 ## License
 
 This repository and all of its content is free to use within the 
