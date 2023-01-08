@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const openapi = require('@wesleytodd/openapi')
+const openapi = require('@wesleytodd/openapi');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local')
+const { auth } = require('express-openid-connect');
 
 const cors = require("cors");
 const corsOptions = {
@@ -23,13 +27,46 @@ const oapi = openapi({
     }
 })
 
+const sessionConfig = {
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+const User = require('./models/User');
+
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+
 app.use(oapi)
 app.use('/docs', oapi.swaggerui)
+
+app.use(
+    auth({
+      issuerBaseURL: 'https://dev-636rdn53oqeekk1a.us.auth0.com',
+      baseURL: 'http://localhost:3000',
+      clientID: 'tWJ3CdKKQBC0yjb1YzNoCZEqSFe4TJGf',
+      secret: '7xyf8pFL5IdQKZqVhN7tbA0S5mJB6NjHEYFS0P_-NdjFTsc21PL_TDECrKkNhKrI',
+      idpLogout: true,
+    })
+  );
+
+app.use(session(sessionConfig))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 const Game = require('./models/game');
 
@@ -105,6 +142,28 @@ const fields = [
 const opts = {
     fields
 };
+
+app.get('/fakeUser', async (req, res) => {
+    const user = new User({email: 'l@gmail.com', username: 'itsal'})
+    const newUser = await User.register(user, 'chicken')
+    res.send(newUser)
+})
+
+// ============================ Sign in ============================
+
+app.get('/signin', async (req, res) => {
+
+})
+
+app.post('/signin', async (req, res) => {
+    // res.send('Got data')
+    console.log("============== GOT DATA ===================")
+    // res.redirect('/')
+    res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
+})
+
+
+// ============================ Default ============================
 
 app.get('/', async (req, res) => {
     const game = req.query;

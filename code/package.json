@@ -12,8 +12,14 @@
     "@wesleytodd/openapi": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-openid-connect": "^2.11.0",
+    "express-session": "^1.17.3",
     "json2csv": "^5.0.7",
-    "mongoose": "^6.7.2",
-    "open": "^8.4.0"
+    "mongoose": "^6.8.3",
+    "open": "^8.4.0",
+    "openapi": "^1.0.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2"
   }
 }
