@@ -289,8 +289,67 @@ app.get('/games', oapi.path({
     const games = await Game.find({
         game
     })
+
+    let newGames = []
+
+    games.forEach(g => {
+        let newExpansions = []
+
+        g.expansions.forEach(e => {
+            newExp = {
+                "@context": {
+                    "title": "https://schema.org/name",
+                    "description": "https://schema.org/description",
+                    "rating": "https://schema.org/contentRating",
+                    "duration": "https://schema.org/timeRequired",
+                    "complexity": "https://schema.org/contentRating"
+                },
+                "@id": "/games/expansions/" + e._id,
+                "@type": "CreativeWork",
+                "_id": e._id,
+                "title": e.title,
+                "year": e.year,
+                "rating": e.rating,
+                "duration": e.duration,
+                "designers": e.designers,
+                "complexity": e.complexity
+            }
+
+            newExpansions.push(newExp)
+        })
+
+        newG = {
+            "@context": {
+                "title": "https://schema.org/name",
+                "description": "https://schema.org/description",
+                "rating": "https://schema.org/contentRating",
+                "players": "https://schema.org/numberOfPlayers",
+                "duration": "https://schema.org/timeRequired",
+                "age": "https://schema.org/requiredMinAge",
+                "complexity": "https://schema.org/contentRating",
+                "categories": "https://schema.org/category"
+            },
+            "@id": "/games/" + g.id,
+            "@type": "CreativeWork",
+            "_id": g._id,
+            "title": g.title,
+            "description": g.description,
+            "year": g.year,
+            "rating": g.rating,
+            "players": g.players,
+            "duration": g.duration,
+            "age": g.age,
+            "complexity": g.complexity,
+            "designers": g.designers,
+            "categories": g.categories,
+            "expansions": newExpansions
+        }
+
+        newGames.push(newG)
+    })
+
     res.status(200).send({
-        games
+        "games": newGames
     });
 })
 
